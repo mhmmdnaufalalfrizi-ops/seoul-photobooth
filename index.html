@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#f7f3ec"><title>SEOUL SNAP — Photobooth</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="app-shell">
+    <header class="topbar">
+      <a class="brand" href="#" aria-label="Seoul Snap Home"><span class="brand-mark">✳</span><span>SEOUL SNAP<small>PHOTOBOOTH STUDIO</small></span></a>
+      <div class="top-actions"><span class="status-dot"></span><span id="deviceStatus">DEMO MODE</span><button class="icon-btn" id="settingsBtn" title="Pengaturan">⚙</button></div>
+    </header>
+    <main>
+      <section class="welcome" id="welcomeScreen">
+        <div class="eyebrow">A LITTLE MOMENT, FOREVER YOURS</div>
+        <h1>Make a little<br><em>memory.</em></h1>
+        <p class="welcome-copy">Ambil 10 foto digital, pilih frame favoritmu, lalu pilih 2–4 foto untuk dicetak.</p>
+        <div class="hero-layout">
+          <div class="hero-art" aria-label="Pratinjau strip photobooth">
+            <div class="sample-strip"><div class="sample-photo p1"><span>01</span><i>☺</i></div><div class="sample-photo p2"><span>02</span><i>✦</i></div><div class="sample-photo p3"><span>03</span><i>☻</i></div><div class="sample-photo p4"><span>04</span><i>♡</i></div><div class="strip-label">SEOUL SNAP · 2026</div></div>
+            <div class="sparkle s1">✳</div><div class="sparkle s2">✧</div><div class="tape"></div>
+          </div>
+          <div class="start-card"><div class="step-number">01 / GET READY</div><h2>Your moment<br>starts here.</h2><p>Pastikan kamu sudah siap di depan kamera. Kita akan mengambil 10 foto dengan jeda countdown. Kamu bisa memilih 2–4 foto untuk cetak.</p><div class="mode-note"><span>●</span><span id="modeText">Demo aktif — kamera belum diperlukan</span></div><button class="primary-btn" id="startBtn">MULAI PHOTOBOOTH <span>↗</span></button><button class="text-btn" id="cameraBtn">Hubungkan webcam PC</button><div class="phone-connect-card"><b>KAMERA HP ANDROID</b><p>Buka halaman ini di PC, salin ID koneksi, lalu buka <code>phone-camera.html</code> di HP.</p><div class="phone-connect-row"><code id="phonePeerId">Belum dibuat</code><button type="button" class="outline-btn" id="phonePeerBtn">AKTIFKAN KONEKSI HP</button></div><p id="phonePeerStatus" class="small-copy">Belum ada kamera HP yang terhubung.</p></div></div>
+        </div>
+        <div class="bottom-note"><span>01 — POSE</span><span>02 — CAPTURE</span><span>03 — KEEP IT</span></div>
+      </section>
+
+      <section class="capture-screen hidden" id="captureScreen">
+        <div class="section-head"><div><div class="eyebrow">02 / THE PHOTO SESSION</div><h2>Ready, set, <em>smile.</em></h2></div><button class="subtle-btn" id="cancelCapture">✕ Keluar</button></div>
+        <div class="capture-grid"><div class="camera-panel"><div class="camera-top"><span><i class="live-dot"></i> LIVE VIEW</span><span id="shotCounter">SHOT 01 / 10</span></div><div class="viewfinder" id="viewfinder"><video id="video" autoplay playsinline muted></video><canvas id="demoCanvas" width="720" height="900"></canvas><div class="viewfinder-overlay"><span class="corner tl"></span><span class="corner tr"></span><span class="corner bl"></span><span class="corner br"></span></div><div class="countdown hidden" id="countdown">3</div><div class="demo-watermark" id="demoWatermark">DEMO PREVIEW</div></div><div class="camera-bottom"><span id="captureHint">Posisikan diri di tengah frame</span><button class="primary-btn small" id="captureBtn">MULAI 10 FOTO <span>→</span></button></div></div><aside class="progress-panel"><div class="panel-label">YOUR PHOTO STRIP</div><div class="mini-strip" id="miniStrip"><div class="mini-shot active">01<span>+</span></div><div class="mini-shot ">02<span>+</span></div><div class="mini-shot ">03<span>+</span></div><div class="mini-shot ">04<span>+</span></div><div class="mini-shot ">05<span>+</span></div><div class="mini-shot ">06<span>+</span></div><div class="mini-shot ">07<span>+</span></div><div class="mini-shot ">08<span>+</span></div><div class="mini-shot ">09<span>+</span></div><div class="mini-shot ">10<span>+</span></div></div><div class="progress-label"><span>PROGRESS</span><b id="progressText">0 / 10</b></div><div class="progress-track"><div id="progressBar"></div></div><p class="small-copy">10 foto akan diambil otomatis setelah countdown.</p></aside></div>
+      </section>
+
+      <section class="edit-screen hidden" id="editScreen">
+        <div class="section-head"><div><div class="eyebrow">03 / YOUR KEEPSAKE</div><h2>Pick your <em>frame.</em></h2></div><button class="subtle-btn" id="retakeBtn">↺ Foto ulang</button></div>
+        <div class="edit-grid"><div class="preview-wrap"><div id="finalStrip" class="final-strip theme-cream"><div class="final-photos" id="finalPhotos"></div><div class="final-caption" id="finalCaption">SEOUL SNAP <span>♥</span> 2026</div></div><div class="preview-meta"><span id="printCountLabel">4 FOTO DIPILIH UNTUK CETAK</span> <span>•</span> 2 × 6 IN</div></div><div class="edit-controls"><div class="control-block"><div class="panel-label">PILIH 2–4 FOTO UNTUK CETAK</div><div class="print-count-options"><button type="button" data-count="2">2 FOTO</button><button type="button" data-count="3">3 FOTO</button><button type="button" data-count="4" class="selected">4 FOTO</button></div><div id="photoPicker" class="photo-picker"></div><small>Pilih foto dari 10 hasil digital. Setiap foto bisa diunduh satu per satu.</small></div><div class="control-block"><div class="panel-label">PILIH FRAME</div><div class="frame-options"><button class="frame-option selected" data-frame="cream"><span class="frame-swatch cream"></span><b>Vanilla</b><small>Warm & classic</small></button><button class="frame-option" data-frame="pink"><span class="frame-swatch pink"></span><b>Blush</b><small>Soft & lovely</small></button><button class="frame-option" data-frame="blue"><span class="frame-swatch blue"></span><b>Cloud</b><small>Cool & calm</small></button><button class="frame-option" data-frame="black"><span class="frame-swatch black"></span><b>Midnight</b><small>Mono mood</small></button></div></div><div class="control-block caption-control"><label for="captionInput" class="panel-label">TULISAN DI FRAME</label><input id="captionInput" maxlength="32" value="SEOUL SNAP ♥ 2026" placeholder="Tulis pesan singkat..."><small>Maksimal 32 karakter</small></div><button class="primary-btn full" id="finishBtn">SIMPAN & LANJUT <span>→</span></button><button class="outline-btn full" id="printBtn">▣ CETAK PHOTO STRIP</button></div></div>
+      </section>
+
+      <section class="result-screen hidden" id="resultScreen">
+        <div class="result-heading"><div class="eyebrow">04 / ALL YOURS</div><h2>A memory to <em>keep.</em></h2><p>10 foto digital siap diunduh satu per satu. Pilih 2–4 foto untuk layout cetak melalui printer yang terhubung.</p></div><div class="result-grid"><div class="result-preview"><div id="resultStrip" class="final-strip theme-cream"><div class="final-photos" id="resultPhotos"></div><div class="final-caption" id="resultCaption">SEOUL SNAP ♥ 2026</div></div></div><div class="result-actions"><div class="qr-card"><div class="qr-heading"><div><b>TAKE IT WITH YOU</b><small>QR SESSION LINK</small></div><span class="qr-icon">⌗</span></div><div id="qrcode" class="qr-box"><span>QR</span></div><p id="qrNote">QR demo membuka alamat aplikasi ini. Untuk berbagi foto ke perangkat lain, hosting dan penyimpanan online diperlukan.</p></div><button class="primary-btn full" id="downloadBtn">↓ UNDUH PHOTO STRIP</button><button class="outline-btn full" id="downloadAllBtn">↓ UNDUH 10 FOTO DIGITAL</button><button class="outline-btn full" id="resultPrintBtn">▣ CETAK SEKARANG</button><button class="text-btn full" id="newSessionBtn">Mulai sesi baru ↗</button></div></div><div class="disclaimer">CETAK OTOMATIS: browser akan membuka dialog cetak karena browser tidak mengizinkan pencetakan diam-diam tanpa izin pengguna.</div>
+      </section>
+    </main>
+    <footer><span>© SEOUL SNAP STUDIO</span><span>MADE FOR LITTLE MOMENTS <b>♥</b></span></footer>
+  </div>
+  <div class="modal hidden" id="settingsModal"><div class="modal-card"><button class="modal-close" id="closeSettings">✕</button><div class="eyebrow">DEVICE SETTINGS</div><h2>Studio setup</h2><p class="settings-intro">Pilih cara menjalankan photobooth. Demo bisa dipakai tanpa kamera.</p><label class="setting-row"><span><b>Mode demo</b><small>Gunakan visual simulasi untuk tes alur</small></span><input type="radio" name="mode" value="demo" checked></label><label class="setting-row"><span><b>Kamera perangkat</b><small>Gunakan webcam yang terhubung</small></span><input type="radio" name="mode" value="camera"></label><div class="settings-warning">Akses kamera memerlukan localhost atau HTTPS dan izin kamera dari browser.</div><button class="primary-btn full" id="saveSettings">SIMPAN PENGATURAN</button></div></div>
+  <div id="toast" class="toast hidden"></div>
+  <script src="https://unpkg.com/peerjs@1.5.4/dist/peerjs.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script><script src="app.js"></script>
+</body></html>
